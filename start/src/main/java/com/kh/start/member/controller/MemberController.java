@@ -2,13 +2,16 @@ package com.kh.start.member.controller;
 
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.kh.start.member.model.dto.MemberDTO;
+import com.kh.start.member.model.dto.UpdatePasswordDTO;
 import com.kh.start.member.model.service.MemberService;
 
+import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 
@@ -32,10 +35,18 @@ public class MemberController {
 	 */
 	
 	@PostMapping
-	public ResponseEntity<?> signUp(@RequestBody MemberDTO member) {
+	public ResponseEntity<?> signUp(@RequestBody @Valid MemberDTO member) {
+		
 		memberService.signUp(member);
 		
 		return ResponseEntity.status(201).build();
 	}
 	
+	@PutMapping
+	public ResponseEntity<?> updatePassword(@RequestBody @Valid UpdatePasswordDTO passwordEntity) {
+		
+		log.info("넘어온 비밀번호 정보: {}", passwordEntity);
+		
+		return null;
+	}
 }

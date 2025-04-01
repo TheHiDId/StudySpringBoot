@@ -37,3 +37,4 @@ out/
 .vscode/
 
 .metadata
+# application-private.yml
