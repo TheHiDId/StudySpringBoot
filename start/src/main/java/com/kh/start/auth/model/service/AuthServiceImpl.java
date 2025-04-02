@@ -44,7 +44,7 @@ public class AuthServiceImpl implements AuthService {
 		CustomUserDetails user = (CustomUserDetails)authentication.getPrincipal();
 		
 		// AccessToken과 RefreshToken 발급하고 리턴
-		Map<String, String> loginResponse = tokenService.generateToken(user.getUsername());
+		Map<String, String> loginResponse = tokenService.generateToken(user.getUsername(), user.getMemberNo());
 		
 		loginResponse.put("memberId", user.getUsername());
 		loginResponse.put("memberName", user.getMemberName());
